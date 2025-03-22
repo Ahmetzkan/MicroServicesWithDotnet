@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BussShared\BussShared.csproj" />
+    <ProjectReference Include="..\BussShared\BusShared.csproj" />
   </ItemGroup>
 
 </Project>

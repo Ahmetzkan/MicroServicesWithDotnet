@@ -1,4 +1,4 @@
-namespace OneMicroservice.API
+namespace RabbitMQExample.API
 {
     public class WeatherForecast
     {

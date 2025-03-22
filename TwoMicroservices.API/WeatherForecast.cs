@@ -1,4 +1,4 @@
-namespace TwoMicroservices.API
+namespace MicroservicesSecond.API
 {
     public class WeatherForecast
     {

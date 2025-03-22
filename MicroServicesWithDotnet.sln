@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99 d17.13
+VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneMicroservice.API", "OneMicroservice.API\OneMicroservice.API.csproj", "{9C67DDD9-6FDF-4A94-BCCC-57325FB16586}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesFirst.API", "OneMicroservice.API\MicroservicesFirst.API.csproj", "{9C67DDD9-6FDF-4A94-BCCC-57325FB16586}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoMicroservices.API", "TwoMicroservices.API\TwoMicroservices.API.csproj", "{0692216B-AECE-452C-8731-9965305DA730}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesSecond.API", "TwoMicroservices.API\MicroservicesSecond.API.csproj", "{0692216B-AECE-452C-8731-9965305DA730}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussShared", "BussShared\BussShared.csproj", "{6F244CB3-F004-4820-A6FE-313C3F7B3311}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusShared", "BussShared\BusShared.csproj", "{6F244CB3-F004-4820-A6FE-313C3F7B3311}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQExample.API", "RabbitMQExample.API\RabbitMQExample.API.csproj", "{3C06131F-229D-4123-852E-3FBC388A2502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService", "WorkerService\WorkerService.csproj", "{200C23E9-BE75-40D2-879D-13B8598B0E73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{6F244CB3-F004-4820-A6FE-313C3F7B3311}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F244CB3-F004-4820-A6FE-313C3F7B3311}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F244CB3-F004-4820-A6FE-313C3F7B3311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C06131F-229D-4123-852E-3FBC388A2502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C06131F-229D-4123-852E-3FBC388A2502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C06131F-229D-4123-852E-3FBC388A2502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C06131F-229D-4123-852E-3FBC388A2502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{200C23E9-BE75-40D2-879D-13B8598B0E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{200C23E9-BE75-40D2-879D-13B8598B0E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{200C23E9-BE75-40D2-879D-13B8598B0E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{200C23E9-BE75-40D2-879D-13B8598B0E73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

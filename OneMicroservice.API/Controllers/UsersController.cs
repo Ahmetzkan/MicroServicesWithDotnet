@@ -1,9 +1,8 @@
-﻿using BussShared;
+﻿using BusShared;
 using MassTransit;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace OneMicroservice.API.Controllers
+namespace MicroservicesFirst.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -12,16 +11,14 @@ namespace OneMicroservice.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser()
         {
-            //Outbox design
-            //Inbox  design
+            //Outbox design, Inbox  design
 
             //transaction begin
-            //  user to create; Sql server
+            //user to create; Sql server
             //Outbox(created,message payload, status)
             //transaction end
 
-
-            // Retry =>  count(5),timeout
+            //Retry =>  count(5),timeout
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
             cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(60));
 
@@ -29,7 +26,6 @@ namespace OneMicroservice.API.Controllers
             await publishEndpoint.Publish(new UserCreatedEvent(Guid.NewGuid(), "ahmet@outlook.com", "555 555 55 55"),
                 pipeline =>
                 {
-                    pipeline.SetAwaitAck(true);
                     pipeline.SetAwaitAck(true);
                     pipeline.Durable = true;
                     pipeline.TimeToLive = TimeSpan.FromMinutes(1);

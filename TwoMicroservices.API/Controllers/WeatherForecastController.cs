@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace TwoMicroservices.API.Controllers;
+namespace MicroservicesSecond.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
