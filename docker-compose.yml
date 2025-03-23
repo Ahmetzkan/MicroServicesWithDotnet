@@ -1,0 +1,13 @@
+services:
+  webapplicationfordocker:
+    image: webapplicationfordocker-image
+    container_name: webapplicationfordocker-container
+    build:
+      context: .
+      dockerfile: WebApplicationForDocker/Dockerfile
+  webapplicationfordocker2:
+    image: webapplicationfordocker2-image
+    container_name: webapplicationfordocker2-container
+    build:
+      context: .
+      dockerfile: WebApplicationForDocker2/Dockerfile
