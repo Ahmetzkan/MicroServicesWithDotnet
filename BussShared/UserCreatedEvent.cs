@@ -1,4 +1,0 @@
-﻿namespace BusShared
-{
-    public record UserCreatedEvent(Guid UserId, string Email, string Phone);
-}

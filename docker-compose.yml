@@ -1,13 +1,25 @@
 services:
-  webapplicationfordocker:
-    image: webapplicationfordocker-image
-    container_name: webapplicationfordocker-container
+  webapplication1:
+    image: webapplication-image
+    container_name: webapplication-container 
     build:
       context: .
-      dockerfile: WebApplicationForDocker/Dockerfile
-  webapplicationfordocker2:
-    image: webapplicationfordocker2-image
-    container_name: webapplicationfordocker2-container
+      dockerfile: WebApplication1/Dockerfile
+  webapplication2:
+    image: webapplication2-image
+    container_name: webapplication2-container 
     build:
       context: .
-      dockerfile: WebApplicationForDocker2/Dockerfile
+      dockerfile: WebApplication2/Dockerfile
+  sqlserver.db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver.db
+    restart: always
+    environment:
+      SA_PASSWORD: Password12*
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1435:1433"
+    volumes:
+      - sqlserver-data-microservice1:/var/opt/mssql
+  
