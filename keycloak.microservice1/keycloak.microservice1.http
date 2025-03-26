@@ -1,0 +1,6 @@
+@keycloak.microservice1_HostAddress = http://localhost:5084
+
+GET {{keycloak.microservice1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
