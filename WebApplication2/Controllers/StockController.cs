@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public IActionResult GetStockCount()
         {
-            throw new Exception("db hatası");
+            throw new Exception("db error");
             return Ok(new { Count = 100 });
         }
     }

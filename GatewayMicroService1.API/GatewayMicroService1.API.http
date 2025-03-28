@@ -1,0 +1,6 @@
+@GatewayMicroService1.API_HostAddress = http://localhost:5285
+
+GET {{GatewayMicroService1.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

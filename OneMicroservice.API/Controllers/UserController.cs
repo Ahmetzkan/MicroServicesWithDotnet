@@ -13,14 +13,11 @@ namespace OneMicroservice.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser()
         {
-            //Outbox design
-            //Inbox  design
-
+            //Outbox design, Inbox  design
             //transaction begin
-            //  user to create; Sql server
+            //user to create; Sql server
             //Outbox(created,message payload, status)
             //transaction end
-
 
             // Retry =>  count(5),timeout
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();

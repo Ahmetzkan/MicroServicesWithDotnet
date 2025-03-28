@@ -1,5 +1,4 @@
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -11,8 +10,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
+//app.UseHttpsRedirection();
 
-app.MapControllers();
+app.MapGet("/api/products/create", () => { return Results.Ok("products list"); });
+
 
 app.Run();

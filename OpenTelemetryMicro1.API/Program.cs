@@ -6,15 +6,13 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using OpenTelemetryMicro1.API;
 using OpenTelemetryMicro1.API.Model;
+using OpenTelemetryMicro1.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+builder.Services.AddHttpClient<Micro2Service>(x => { });
 builder.Services.AddDbContext<AppDbContext>(o =>
 {
     o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
@@ -37,14 +35,19 @@ builder.Services.AddOpenTelemetry().WithTracing(options =>
         o.RecordException = true;
 
 
+        o.Filter = (context) =>
+        {
+            var url = context.Request.Path.Value!;
+            Console.WriteLine(url);
+            return url.Contains("api");
+        };
+
+
         o.EnrichWithHttpRequest = (activity, request) =>
         {
             var userId = 200;
             activity.AddTag("userId", 200);
         };
-
-
-        o.Filter = (context => context.Request.Path.Value!.Contains("api"));
     });
     options.AddEntityFrameworkCoreInstrumentation(o =>
     {
@@ -69,7 +72,6 @@ builder.Services.AddOpenTelemetry().WithTracing(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -84,27 +86,26 @@ var summaries = new[]
 };
 
 
-app.MapGet("api/order", async (ILogger<Program> logger, AppDbContext context) =>
+app.MapGet("api/order", async (ILogger<Program> logger, AppDbContext context, Micro2Service micro2Service) =>
 {
-    var httpclient = new HttpClient();
-    var response = await httpclient.GetAsync("https://www.google.com");
-
-
     context.Orders.Add(new Order { Code = "123" });
     await context.SaveChangesAsync();
     Activity.Current?.AddTag("orderCode", "123");
 
     using (var activity = ActivitySourceProvider.Instance.StartActivity("File Write Operation", ActivityKind.Server))
     {
-        System.IO.File.WriteAllText("example.txt", "Merhaba Dünya");
+        System.IO.File.WriteAllText("example.txt", "Hello World");
     }
 
 
     var userId = 30;
-    logger.LogInformation("Sipariş endpoint çalıştı");
-    logger.LogInformation("Sipariş oluştu,userId={userId}", userId);
+    logger.LogInformation("Siparis endpoint is worked");
+    logger.LogInformation("Siparis is created, userId={userId}", userId);
 
-    return Results.Ok();
+
+    var response = await micro2Service.GetMicro2Data();
+
+    return Results.Ok(response);
 });
 
 

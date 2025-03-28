@@ -23,8 +23,6 @@ namespace RabbitMQExample.API.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            //rabbitmq
-
             var connectionFactory = new ConnectionFactory();
             connectionFactory.Uri = new Uri("");
 
